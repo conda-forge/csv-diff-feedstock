@@ -1,13 +1,13 @@
 {% set name = "csv-diff" %}
-{% set version = "1.1" %}
+{% set version = "1.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/csv-diff-{{ version }}.tar.gz
-  sha256: ff94117992c67dd8bc4f917374f4dc198945ff85b1d67a11bd148b635f576bea
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: f6c251542fbcd9d6eef8b27c3870fc4dfc3592c880c34dac57ed94e382f2d53b
 
 build:
   entry_points:
