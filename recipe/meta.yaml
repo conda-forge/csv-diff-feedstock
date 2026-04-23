@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: f6c251542fbcd9d6eef8b27c3870fc4dfc3592c880c34dac57ed94e382f2d53b
 
 build:
@@ -14,15 +14,15 @@ build:
     - csv-diff = csv_diff.cli:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pytest-runner
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - click
     - dictdiffer
 
@@ -34,6 +34,7 @@ test:
     - csv-diff --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/simonw/csv-diff
